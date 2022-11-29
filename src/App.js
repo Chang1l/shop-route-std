@@ -2,10 +2,10 @@ import './App.css';
 import {Button,Container, Navbar,Nav} from 'react-bootstrap';
 import {Items} from './Items';
 import {Details} from './Details';
-// import $ from 'jquery';
 import Main from './Main';
-// import {useState} from'react';
 import {Routes, Route,Link ,useNavigate,Outlet}from 'react-router-dom';
+import ComLife from './ComLife';
+
 
 function App() {
   let navigate=useNavigate();
@@ -32,7 +32,7 @@ function App() {
             <Nav.Link href='/detail'>Detail</Nav.Link> */}
              <Nav.Link onClick={()=>navigate('/')}>Home</Nav.Link>
              <Nav.Link onClick={()=>navigate('/cart')}>Cart</Nav.Link>
-             <Nav.Link onClick={()=>navigate('/detail')}>Detail</Nav.Link>
+             <Nav.Link onClick={()=>navigate('/test')}>Test</Nav.Link>
              <Nav.Link onClick={()=>navigate('/about')}>About</Nav.Link>
              <Nav.Link onClick={()=>navigate('/about/member')}>Member</Nav.Link>
              <Nav.Link onClick={()=>navigate('/about/loc')}>Loc</Nav.Link>
@@ -63,6 +63,7 @@ function App() {
                 <Route path="/detail/:pid/:ln" element={<Details/>}/>
                 {/* 바인딩변수를 element로 전달 해당 컴포넌트 */}
                 <Route path="/cart" element={<div>장바구니 페이지 임</div>}/>
+                <Route path="/test" element={<ComLife/>}/>
 
                  {/* 중첩(nested) 라우터 표현 */}
                 <Route path="/about" element={<About/>}>
