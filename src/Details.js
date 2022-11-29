@@ -9,7 +9,7 @@ if(pid>ln)pid=0;
 let nav= useNavigate();
 let pidImg=pid>ln? 0:pid;
 
-let divStyle={backgroundImage:'url('+process.env.PUBLIC_URL+'/img/jp'+pidImg+'.png'};
+let divStyle={backgroundImage:`url(/shop/img/jp${pidImg}.png`};
 
 return(
         <Container>

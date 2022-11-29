@@ -6,23 +6,14 @@ let[likecnt, likecntchk]=useState(0);
 let navigate=useNavigate();
 let idx=props.ord;
 let idxImg= props.ord> props.arrlen ? 0:props.ord;
-let isStyle={backgroundImage:'url('+process.env.PUBLIC_URL+'/img/jp'+idxImg+'.png'};
+let isStyle={backgroundImage:`url(/shop/img/jp${idxImg}.png`};
 
 return(
     <div className="col-lg-4">
         <div className="imgBox">
             <div className="imgCon" alt={'이미지'+idx} style={isStyle}  onClick={(e)=>{
-                navigate('/detail/'+props.ord+'/'+props.arrlen);
+                navigate('/detail/'+props.ord+'/'+props.arrlen+'/'+likecnt);
                     // pathVariable 방식
-
-            // window.location.href='/detail';
-            // let x =e.pageX;
-            // const y=e.pageY;
-            // console.log(`x축: ${x}, y축: ${y}`);
-            // $('.modBox').show();
-            // $('.modBox').css({top:y+'px',left: x+'px'});
-            // $('.modBox h3').text('상품'+props.ord);
-            // $('.modBox p').text('상품'+props.ord+' 설명');
 
     }}/>
              

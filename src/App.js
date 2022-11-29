@@ -25,14 +25,14 @@ function App() {
      {/* 메뉴바 */}
      <Navbar bg="light" expand="lg">
     <Container>
-      <Navbar.Brand href="/">ShoeShop</Navbar.Brand>
+      <Navbar.Brand onClick={()=>navigate('/shop')}>ShoeShop</Navbar.Brand>
       <Navbar.Toggle aria-controls='basic-navbar-nav'/>
       <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='me-auto'>
             {/* <Nav.Link href='/'>Home</Nav.Link>
             <Nav.Link href='/cart'>Cart</Nav.Link>
             <Nav.Link href='/detail'>Detail</Nav.Link> */}
-             <Nav.Link onClick={()=>navigate('/')}>Home</Nav.Link>
+             <Nav.Link onClick={()=>navigate('/shop')}>Home</Nav.Link>
              <Nav.Link onClick={()=>navigate('/cart')}>Cart</Nav.Link>
              <Nav.Link onClick={()=>navigate('/test')}>Test</Nav.Link>
              <Nav.Link onClick={()=>navigate('/about/member')}>회원정보</Nav.Link>
@@ -43,9 +43,28 @@ function App() {
     </Navbar>
 
     <Routes>
-                <Route path="/" element={
+                <Route path="/shop" element={
                                   <>
-                                    <div className='main-bg'></div>
+                                    <div className='main-bg' style={{backgroundImage:`url(/shop/img/1.png)`}}></div>
+                    <div className='container'>
+                    <div className='row'>
+                      {/* key속성 권장 */}
+                      {/* arr.length 길이만큼  */}
+                      {
+                          arr.map((v,i)=>{
+                                if(v>3) v=0;
+                                return (<Items key={i} ord={v} arrlen={3}/>)
+                          })
+                      }
+                      </div>
+                    </div>
+                      </>
+
+                }/>
+
+                    <Route path="/shop/index.html" element={
+                                  <>
+                                    <div className='main-bg' style={{backgroundImage:`url(/shop/img/1.png)`}}></div>
                     <div className='container'>
                     <div className='row'>
                       {/* key속성 권장 */}
@@ -122,7 +141,8 @@ function Member(){
   let [dt, dtchk] = useState([]);
 
   useEffect(() => {
-    ax.get('http://localhost:8090/member/admin')
+    // ax.get('http://localhost:8090/member/admin')
+    ax.get('/member/admin')
     .then((data)=>{
       console.log(data.data);
       mb = data.data;
@@ -140,6 +160,7 @@ function Member(){
       {str}<br/><br/>
       <Button variant='primary' onClick={()=>{
         ax.get('http://localhost:8090/member/list')
+        
         .then((data)=>{
           console.log(data);
           dtchk(data.data);
