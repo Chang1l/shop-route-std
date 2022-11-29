@@ -1,11 +1,11 @@
 import './App.css';
-import {Button,Container, Navbar,Nav} from 'react-bootstrap';
-import {Items} from './Items';
-import {Details} from './Details';
-import Main from './Main';
-import {Routes, Route,Link ,useNavigate,Outlet}from 'react-router-dom';
-import ComLife from './ComLife';
+import {Button,Container, Navbar,Nav,Table} from 'react-bootstrap';
 import React, {useEffect, useState } from 'react';
+import {Routes, Route,Link ,useNavigate,Outlet}from 'react-router-dom';
+import {Details} from './Details';
+import {Items} from './Items';
+import ComLife from './ComLife';
+import Cart from './Cart';
 import Join from './Join';
 import ax from 'axios';
 
@@ -63,7 +63,7 @@ function App() {
                 }/>
                 <Route path="/detail/:pid/:ln" element={<Details/>}/>
                 {/* 바인딩변수를 element로 전달 해당 컴포넌트 */}
-                <Route path="/cart" element={<div>장바구니 페이지 임</div>}/>
+                <Route path="/cart" element={<Cart/>}/>
               
 
                  {/* 중첩(nested) 라우터 표현 */}
